@@ -16,13 +16,20 @@
 
     &__content-right {
         margin-left: auto;
+        display: flex;
     }
 
     .brand {
         font-size: 14px;
     }
 
+    .info__content {
+        font-size: 10px;
+    }
+
     .github {
+        margin-left: 6px;
+
         &:link .fab,
         &:visited .fab {
             color: $secondary-color;
