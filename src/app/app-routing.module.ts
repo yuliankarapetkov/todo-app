@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 
 const ROUTES: Routes = [
     {
@@ -11,6 +10,10 @@ const ROUTES: Routes = [
     {
         path: 'auth',
         loadChildren: './auth/auth.module#AuthModule'
+    },
+    {
+        path: 'todos',
+        loadChildren: './todos/todos.module#TodosModule'
     }
 ];
 
