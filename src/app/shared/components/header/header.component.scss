@@ -4,7 +4,7 @@
     height: 40px;
     line-height: 40px;
     background-color: $dark-primary-color;
-    color: $light-secondary-color;
+    color: $secondary-color;
 
     &__content {
         display: flex;
@@ -25,7 +25,7 @@
     .github {
         &:link .fab,
         &:visited .fab {
-            color: $light-secondary-color;
+            color: $secondary-color;
         }
 
         &:hover .fab {
