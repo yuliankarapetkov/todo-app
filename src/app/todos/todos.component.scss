@@ -1,0 +1,63 @@
+@import 'variables';
+@import 'elements';
+
+.todos {
+    &__header {
+        background-color: $primary-color;
+        padding: 120px 0 60px;
+        box-shadow: 0 2px 6px rgba(0,0,0,.2);
+    }
+
+    &__form {
+        position: relative;
+
+        &-input {
+            outline: none;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+
+            @include placeholderColor($light-primary-color);
+            color: $secondary-color;
+            border-bottom: 1px solid $light-primary-color;
+
+            height: 50px;
+            font-size: 28px;
+            font-weight: 300;
+            width: 100%;
+            margin-top: -1px;
+            padding: 0 0 5px 0;
+
+            &:focus {
+                @include placeholderColor($secondary-color);
+                border-bottom: 2px solid $secondary-color;
+                margin-top: -2px;
+
+                font-size: 32px;
+                transition: all .2s cubic-bezier(0.23, 1, 0.32, 1);
+            }
+        }
+
+        &-submit {
+            background-color: $accent-color;
+            color: $secondary-color;
+            height: 60px;
+            width: 60px;
+            font-size: 20px;
+            border-radius: 50%;
+            border: none;
+            outline: none;
+            position: absolute;
+            bottom: -90px;
+            left: 50%;
+            cursor: pointer;
+
+            box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+
+            &:hover {
+                transform: scale(1.05);
+                transition: all .1s;
+            }
+        }
+    }
+}
