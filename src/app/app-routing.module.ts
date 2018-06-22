@@ -6,11 +6,12 @@ const ROUTES: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        component: AppComponent
+        redirectTo: 'auth'
     },
-    // {
-    //
-    // }
+    {
+        path: 'auth',
+        loadChildren: './auth/auth.module#AuthModule'
+    }
 ];
 
 @NgModule({
