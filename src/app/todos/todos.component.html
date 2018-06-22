@@ -1,14 +1,35 @@
 <div class="todos">
     <div class="todos__header">
         <div class="container">
-            <div class="todos__form">
-                <form>
-                    <input class="todos__form-input" type="text" placeholder="What needs to be done?" />
+            <form class="todos__form">
+                <input class="todos__form-input" type="text" placeholder="What needs to be done?" />
 
-                    <button class="todos__form-submit" type="submit">
-                        <i class="fas fa-plus"></i>
+                <button class="button todos__form-submit" type="submit">
+                    Add Me
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="todos__content container">
+        <div class="todos-list">
+            <div class="todo-item">
+                <div class="todo-item__col">
+                    <button class="circ-button">
+                        <i class="fas fa-check"></i>
                     </button>
-                </form>
+                </div>
+                <div class="todos__list-item-col">
+                    Sample text
+                </div>
+                <div class="todos__list-item-col">
+                    <button class="circ-button">
+                        <i class="fas fa-pen"></i>
+                    </button>
+                    <button class="circ-button">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
