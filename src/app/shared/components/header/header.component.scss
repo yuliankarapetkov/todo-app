@@ -1,0 +1,35 @@
+@import 'variables';
+
+.header {
+    height: 40px;
+    line-height: 40px;
+    background-color: $dark-primary-color;
+    color: $light-secondary-color;
+
+    &__content {
+        display: flex;
+    }
+
+    &__content-left {
+
+    }
+
+    &__content-right {
+        margin-left: auto;
+    }
+
+    .brand {
+        font-size: 14px;
+    }
+
+    .github {
+        &:link .fab,
+        &:visited .fab {
+            color: $light-secondary-color;
+        }
+
+        &:hover .fab {
+            color: $light-primary-color;
+        }
+    }
+}
