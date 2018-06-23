@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../shared/services';
+
+import { Store } from '@ngrx/store';
+import * as fromStore from '../store';
 
 @Component({
     selector: 'auth-root',
@@ -8,12 +10,11 @@ import { AuthService } from '../shared/services';
 })
 export class AuthComponent implements OnInit {
     constructor(
-        private authService: AuthService
+        private store: Store<fromStore.State>
     ) {}
 
     signInAnonymously() {
-        this.authService.signInAnonymously()
-            .subscribe(result => console.log(result));
+        this.store.dispatch(new fromStore.SignInUserAnonymously());
     }
 
     ngOnInit() {
