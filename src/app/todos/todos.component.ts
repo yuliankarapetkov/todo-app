@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { TodosService } from './shared/services';
+
+import { Store } from '@ngrx/store';
+import * as fromStore from './store';
+
+import { Todo } from './shared/models';
 
 @Component({
     selector: 'todos-root',
@@ -8,12 +12,11 @@ import { TodosService } from './shared/services';
 })
 export class TodosComponent implements OnInit {
     constructor(
-        private todosService: TodosService
+        private store: Store<fromStore.TodoManagerState>
     ) {}
 
-    onAddTodo(todo: any) {
-        console.log(todo);
-        this.todosService.addTodo(todo);
+    onAddTodo(todo: Todo) {
+        this.store.dispatch(new fromStore.CreateTodo(todo));
     }
 
     ngOnInit() {

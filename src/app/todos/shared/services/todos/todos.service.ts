@@ -6,7 +6,8 @@ import { from, Observable } from 'rxjs';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 import * as fromServices from '../../../../shared/services';
-// import * as fromModels from '../../models';
+import { Todo } from '../../models';
+
 import { TodosSharedModule } from '../../shared.module';
 
 @Injectable({
@@ -24,7 +25,7 @@ export class TodosService {
         return this.authService.user.uid;
     }
 
-    getFriends(): Observable<any> {
+    getTodos(): Observable<any[]> {
         return this.database.list(`${this.dbPath}/${this.uid}`)
             .snapshotChanges()
             .pipe(
@@ -32,15 +33,15 @@ export class TodosService {
             );
     }
 
-    addTodo(todo: any) {
+    addTodo(todo: Todo) {
         return from(this.database.list(`${this.dbPath}/${this.uid}`).push(todo));
     }
 
-    updateFriend(key: string, todo: any) {
+    updateTodo(key: string, todo: Todo) {
         return from(this.database.object(`${this.dbPath}/${this.uid}/${key}`).update(todo));
     }
 
-    removeFriend(key: string) {
+    removeTodo(key: string) {
         return from(this.database.list(`${this.dbPath}/${this.uid}`).remove(key));
     }
 }
