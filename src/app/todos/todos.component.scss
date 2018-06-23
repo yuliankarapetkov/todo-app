@@ -1,5 +1,4 @@
 @import 'variables';
-@import 'elements';
 
 .todos {
     &__header {
@@ -11,48 +10,6 @@
     &__content {
         .todos-list {
             margin-top: 60px;
-        }
-
-        .todo-item {
-            display: flex;
-            padding: 16px 0;
-            border-top: 1px solid $divider-color;
-            border-bottom: 1px solid $divider-color;
-
-            &__col {
-                display: flex;
-                align-items: center;
-
-                &:first-child,
-                &:last-child {
-
-                }
-
-                &:nth-child(2) {
-                    flex: 1;
-                }
-            }
-
-            &__button {
-                @include circButton(40px);
-
-                background-color: $light-primary-color;
-                margin-left: 6px;
-
-                &:hover {
-                    background-color: $primary-color;
-                    color: $secondary-color;
-                }
-
-                &:first-child {
-                    margin-left: 0;
-                }
-            }
-
-            &__title {
-                font-size: 24px;
-                padding-left: 24px;
-            }
         }
     }
 }
