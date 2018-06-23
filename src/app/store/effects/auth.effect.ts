@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Effect, Actions } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs/operators';
@@ -10,11 +11,12 @@ import * as fromServices from '../../shared/services';
 export class AuthEffect {
     constructor(
         private actions$: Actions,
+        private router: Router,
         private authService: fromServices.AuthService
     ) {}
 
     @Effect()
-    signInUserAnonymously = this.actions$
+    signInUserAnonymously$ = this.actions$
         .ofType(authAction.SIGN_IN_USER_ANONYMOUSLY)
         .pipe(
             switchMap(() => {
@@ -28,7 +30,7 @@ export class AuthEffect {
         );
 
     @Effect()
-    signOutUser = this.actions$
+    signOutUser$ = this.actions$
         .ofType(authAction.SIGN_OUT_USER)
         .pipe(
             switchMap(() => {
@@ -42,7 +44,7 @@ export class AuthEffect {
         );
 
     @Effect()
-    getIsAuthenticated = this.actions$
+    getIsAuthenticated$ = this.actions$
         .ofType(authAction.GET_IS_AUTHENTICATED)
         .pipe(
             switchMap(() => {
@@ -52,6 +54,19 @@ export class AuthEffect {
                         map((isAuthenticated: boolean) => new authAction.SetIsAuthenticated(isAuthenticated)),
                         // catchError(error => of(new authAction.SetError()))
                     );
+            })
+        );
+
+    @Effect()
+    setIsAuthenticated$ = this.actions$
+        .ofType(authAction.SET_IS_AUTHENTICATED)
+        .pipe(
+            map(isAuthenticated => {
+               if (isAuthenticated) {
+                   this.router.navigate(['/todos']);
+               }  else {
+                   this.router.navigate(['/auth']);
+               }
             })
         );
 }
