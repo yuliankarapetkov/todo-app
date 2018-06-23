@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+// Guards
+import { RequireAuthGuard } from './shared/guards/require-auth/require-auth.guard';
+
 const ROUTES: Routes = [
     {
         path: '',
@@ -13,7 +16,8 @@ const ROUTES: Routes = [
     },
     {
         path: 'todos',
-        loadChildren: './todos/todos.module#TodosModule'
+        loadChildren: './todos/todos.module#TodosModule',
+        canActivate: [RequireAuthGuard]
     }
 ];
 
