@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
 import { TodosService } from './shared/services';
 
 @Component({
@@ -8,21 +7,13 @@ import { TodosService } from './shared/services';
     styleUrls: ['./todos.component.scss']
 })
 export class TodosComponent implements OnInit {
-    todoForm = this.formBuilder.group({
-        description: ['', [Validators.required]],
-        completed: [false, [Validators.required]]
-    });
-
     constructor(
-        private formBuilder: FormBuilder,
         private todosService: TodosService
     ) {}
 
-    submitForm() {
-        if (this.todoForm.valid) {
-            console.log(this.todoForm.value);
-            this.todosService.addTodo(this.todoForm.value);
-        }
+    onAddTodo(todo: any) {
+        console.log(todo);
+        this.todosService.addTodo(todo);
     }
 
     ngOnInit() {

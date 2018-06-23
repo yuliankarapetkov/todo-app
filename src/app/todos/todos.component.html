@@ -1,13 +1,9 @@
 <div class="todos">
     <div class="todos__header">
         <div class="container">
-            <form [formGroup]="todoForm" class="todos__form" (submit)="submitForm()">
-                <input
-                    formControlName="description"
-                    class="todos__form-input"
-                    type="text"
-                    placeholder="What needs to be done?" />
-            </form>
+            <todos-todo-form
+                (addTodo)="onAddTodo($event)">
+            </todos-todo-form>
         </div>
     </div>
 
