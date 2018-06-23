@@ -37,7 +37,7 @@ export class TodosEffect {
                 return this.todosService
                     .addTodo(todo)
                     .pipe(
-                        // map(() => new todoAction.CreateTodoSuccess())
+                        map(() => new todoAction.CreateTodoSuccess())
                         // catch error
                     );
             })
@@ -53,7 +53,7 @@ export class TodosEffect {
                 return this.todosService
                     .updateTodo(key, todoToUpdate)
                     .pipe(
-                        // map(() => new todoAction.UpdateTodoSuccess()),
+                        map(() => new todoAction.UpdateTodoSuccess())
                         // catch error
                     );
             })
@@ -68,7 +68,7 @@ export class TodosEffect {
                 return this.todosService
                     .removeTodo(key)
                     .pipe(
-                        // catch error
+                        map(() => new todoAction.RemoveTodoSuccess())
                     );
             })
         );
