@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { MetaReducer, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeFreeze } from 'ngrx-store-freeze';
 
@@ -21,7 +21,7 @@ import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 
 // Store
-import { reducers } from './store/reducers';
+import { CustomSerializer, reducers } from './store/reducers';
 import { effects } from './store/effects';
 
 const metaReducers: MetaReducer<any>[] = !environment.production
@@ -59,7 +59,9 @@ const firebaseConfig = {
         AppRoutingModule,
         SharedModule,
     ],
-    providers: [],
+    providers: [
+        { provide: RouterStateSerializer, useClass: CustomSerializer }
+    ],
     bootstrap: [ AppComponent ]
 })
 export class AppModule { }
