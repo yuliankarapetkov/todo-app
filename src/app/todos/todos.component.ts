@@ -23,6 +23,10 @@ export class TodosComponent implements OnInit {
         this.store.dispatch(new fromStore.CreateTodo(todo));
     }
 
+    onUpdateTodo(todo: Todo) {
+        this.store.dispatch(new fromStore.UpdateTodo(todo));
+    }
+
     onRemoveTodo(todo: Todo) {
         this.store.dispatch(new fromStore.RemoveTodo(todo.key));
     }

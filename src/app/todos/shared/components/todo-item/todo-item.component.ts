@@ -11,10 +11,18 @@ export class TodoItemComponent implements OnInit {
     @Input() item: Todo;
 
     @Output() remove = new EventEmitter<Todo>();
+    @Output() update = new EventEmitter<Todo>();
 
     constructor() { }
 
-    removeClicked() {
+    toggleIsCompleted() {
+        this.update.emit({
+            ...this.item,
+            isCompleted: !this.item.isCompleted
+        });
+    }
+
+    removeItem() {
         this.remove.emit(this.item);
     }
 

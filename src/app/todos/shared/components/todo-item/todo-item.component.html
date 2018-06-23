@@ -1,6 +1,9 @@
 <div class="todo-item">
     <div class="todo-item__col">
-        <button class="todo-item__button">
+        <button
+            (click)="toggleIsCompleted()"
+            class="todo-item__button"
+            [class.active]="item.isCompleted">
             <i class="fas fa-check"></i>
         </button>
     </div>
@@ -13,7 +16,7 @@
         <button class="todo-item__button">
             <i class="fas fa-pen"></i>
         </button>
-        <button (click)="removeClicked()" class="todo-item__button">
+        <button (click)="removeItem()" class="todo-item__button">
             <i class="fas fa-trash"></i>
         </button>
     </div>

@@ -12,7 +12,8 @@
             <todos-todo-item
                 *ngFor="let item of todos$ | async"
                 [item]="item"
-                (remove)="onRemoveTodo($event)">
+                (remove)="onRemoveTodo($event)"
+                (update)="onUpdateTodo($event)">
             </todos-todo-item>
         </div>
     </div>

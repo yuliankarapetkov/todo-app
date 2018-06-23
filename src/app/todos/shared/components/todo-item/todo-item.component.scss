@@ -27,7 +27,8 @@
         background-color: $light-primary-color;
         margin-left: 6px;
 
-        &:hover {
+        &:hover,
+        &.active {
             background-color: $primary-color;
             color: $secondary-color;
         }

@@ -11,7 +11,7 @@ export class TodoFormComponent implements OnInit {
 
     todoForm = this.formBuilder.group({
         description: ['', [Validators.required]],
-        completed: [false, [Validators.required]]
+        isCompleted: [false, [Validators.required]]
     });
 
     constructor(
