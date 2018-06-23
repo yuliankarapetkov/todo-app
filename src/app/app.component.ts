@@ -17,6 +17,10 @@ export class AppComponent implements OnInit {
         private store: Store<fromStore.State>
     ) {}
 
+    onSignOutClicked() {
+        this.store.dispatch(new fromStore.SignOutUser());
+    }
+
     ngOnInit() {
         this.store.dispatch(new fromStore.GetIsAuthenticated());
         this.isAuthenticated$ = this.store.select(fromStore.getIsAuthenticated);

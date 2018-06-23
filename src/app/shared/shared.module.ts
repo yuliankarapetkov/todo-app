@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { components } from './components';
 
@@ -6,8 +7,12 @@ import { components } from './components';
     declarations: [
         ...components
     ],
+    imports: [
+        CommonModule
+    ],
     exports: [
-        ...components
+        ...components,
+        CommonModule
     ]
 })
 export class SharedModule { }

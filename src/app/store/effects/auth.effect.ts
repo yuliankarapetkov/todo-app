@@ -57,16 +57,16 @@ export class AuthEffect {
             })
         );
 
-    @Effect()
-    setIsAuthenticated$ = this.actions$
-        .ofType(authAction.SET_IS_AUTHENTICATED)
-        .pipe(
-            map(isAuthenticated => {
-               if (isAuthenticated) {
-                   this.router.navigate(['/todos']);
-               }  else {
-                   this.router.navigate(['/auth']);
-               }
-            })
-        );
+    // @Effect()
+    // setIsAuthenticated$ = this.actions$
+    //     .ofType(authAction.SET_IS_AUTHENTICATED)
+    //     .pipe(
+    //         map(isAuthenticated => {
+    //            if (isAuthenticated) {
+    //                this.router.navigate(['/todos']);
+    //            }  else {
+    //                this.router.navigate(['/auth']);
+    //            }
+    //         })
+    //     );
 }

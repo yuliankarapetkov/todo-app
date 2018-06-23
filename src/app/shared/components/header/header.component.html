@@ -9,11 +9,14 @@
             <!--<div class="info__content">-->
                 <!--Inspired by Richard Park, developed by Yulian Karapetkov-->
             <!--</div>-->
+            <!--<a>-->
+                <!--<i class="fas fa-info-circle"></i>-->
+            <!--</a>-->
 
-            <a>
-                <i class="fas fa-info-circle"></i>
+            <a class="sign-out-button" *ngIf="isAuthenticated" (click)="signOut()">
+                Sign Out
             </a>
-            <a class="github" href="https://github.com/yuliankarapetkov/todo-app" target="_blank">
+            <a class="github" [href]="githubUrl" target="_blank">
                 <i class="fab fa-github"></i>
             </a>
         </div>

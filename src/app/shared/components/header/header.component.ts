@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
     selector: 'app-header',
@@ -6,7 +6,16 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+    @Input() isAuthenticated: boolean;
+    @Output() signOutClicked = new EventEmitter<void>();
+
+    readonly githubUrl = 'https://github.com/yuliankarapetkov/todo-app';
+
     constructor() { }
+
+    signOut() {
+        this.signOutClicked.emit();
+    }
 
     ngOnInit() {
     }
