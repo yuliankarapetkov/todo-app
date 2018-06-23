@@ -9,7 +9,9 @@
 
     <div class="todos__content container">
         <div class="todos-list">
-            <todos-todo-item>
+            <todos-todo-item
+                *ngFor="let item of todos$ | async"
+                [item]="item">
             </todos-todo-item>
         </div>
     </div>

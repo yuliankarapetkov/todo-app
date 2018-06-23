@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Observable } from 'rxjs';
+
 import { Store } from '@ngrx/store';
 import * as fromStore from './store';
 
@@ -11,6 +13,8 @@ import { Todo } from './shared/models';
     styleUrls: ['./todos.component.scss']
 })
 export class TodosComponent implements OnInit {
+    todos$: Observable<Todo[]>;
+
     constructor(
         private store: Store<fromStore.TodoManagerState>
     ) {}
@@ -20,5 +24,7 @@ export class TodosComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.store.dispatch(new fromStore.LoadTodos());
+        this.todos$ = this.store.select(fromStore.getTodos);
     }
 }
