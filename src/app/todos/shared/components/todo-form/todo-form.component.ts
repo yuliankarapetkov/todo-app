@@ -10,8 +10,7 @@ export class TodoFormComponent implements OnInit {
     @Output() addTodo = new EventEmitter<any>();
 
     todoForm = this.formBuilder.group({
-        description: ['', [Validators.required]],
-        isCompleted: [false, [Validators.required]]
+        description: ['', [Validators.required]]
     });
 
     constructor(
@@ -20,7 +19,8 @@ export class TodoFormComponent implements OnInit {
 
     submitForm() {
         if (this.todoForm.valid) {
-            this.addTodo.emit(this.todoForm.value);
+            const todo = { ...this.todoForm.value, isCompleted: false };
+            this.addTodo.emit(todo);
             this.todoForm.reset();
         }
     }
