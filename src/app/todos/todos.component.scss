@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'media-queries';
 
 .todos {
     &__header {
@@ -14,6 +15,24 @@
             &__empty {
                 font-size: 24px;
                 color: $secondary-text;
+            }
+        }
+    }
+}
+
+@include mediumDevice() {
+    .todos {
+        &__header {
+            padding: 80px 0 40px;
+        }
+
+        &__content {
+            .todos-list {
+                margin-top: 40px;
+
+                &__empty {
+                    font-size: 18px;
+                }
             }
         }
     }

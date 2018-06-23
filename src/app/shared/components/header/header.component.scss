@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'media-queries';
 
 .header {
     height: 40px;
@@ -60,6 +61,16 @@
 
             &:hover .fab {
                 color: $light-primary-color;
+            }
+        }
+    }
+}
+
+@include mediumDevice() {
+    .header {
+        &__content-left {
+            .info {
+                display: none;
             }
         }
     }

@@ -2,3 +2,9 @@ h1 {
     font-size: 36px;
     color: $primary-text;
 }
+
+@include mediumDevice() {
+    h1 {
+        font-size: 32px;
+    }
+}
