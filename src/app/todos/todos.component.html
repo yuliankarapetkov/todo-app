@@ -11,7 +11,8 @@
         <div class="todos-list">
             <todos-todo-item
                 *ngFor="let item of todos$ | async"
-                [item]="item">
+                [item]="item"
+                (remove)="onRemoveTodo($event)">
             </todos-todo-item>
         </div>
     </div>
