@@ -1,12 +1,12 @@
 <div class="todos">
     <div class="todos__header">
         <div class="container">
-            <form class="todos__form">
-                <input class="todos__form-input" type="text" placeholder="What needs to be done?" />
-
-                <button class="button todos__form-submit" type="submit">
-                    Add Me
-                </button>
+            <form [formGroup]="todoForm" class="todos__form" (submit)="submitForm()">
+                <input
+                    formControlName="description"
+                    class="todos__form-input"
+                    type="text"
+                    placeholder="What needs to be done?" />
             </form>
         </div>
     </div>
