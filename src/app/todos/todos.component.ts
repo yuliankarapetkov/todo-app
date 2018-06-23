@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
@@ -8,6 +8,7 @@ import * as fromStore from './store';
 import { Todo } from './shared/models';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'todos-root',
     templateUrl: './todos.component.html',
     styleUrls: ['./todos.component.scss']
