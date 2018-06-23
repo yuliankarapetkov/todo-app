@@ -10,9 +10,18 @@ export class HeaderComponent implements OnInit {
     @Input() isAuthenticated: boolean;
     @Output() signOutClicked = new EventEmitter<void>();
 
-    readonly githubUrl = 'https://github.com/yuliankarapetkov/todo-app';
+    readonly rParkGithubUrl = 'https://github.com/r-park';
+    readonly rParkAppUrl = 'https://ng2-todo-app.firebaseapp.com/';
+    readonly authorGithubUrl = 'https://github.com/yuliankarapetkov'
+    readonly appGithubUrl = 'https://github.com/yuliankarapetkov/todo-app';
+
+    showInfo = false;
 
     constructor() { }
+
+    toggleShowInfo() {
+        this.showInfo = !this.showInfo;
+    }
 
     signOut() {
         this.signOutClicked.emit();
