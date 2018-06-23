@@ -41,5 +41,11 @@
     &__description {
         font-size: 24px;
         padding-left: 24px;
+
+        input[type=text] {
+            border: none;
+            padding: 0;
+            outline: none;
+        }
     }
 }

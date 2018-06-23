@@ -1,19 +1,35 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 import { Todo } from '../../models';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'todos-todo-item',
     templateUrl: './todo-item.component.html',
     styleUrls: ['./todo-item.component.scss']
 })
-export class TodoItemComponent implements OnInit {
+export class TodoItemComponent implements OnInit, OnChanges {
     @Input() item: Todo;
 
     @Output() remove = new EventEmitter<Todo>();
     @Output() update = new EventEmitter<Todo>();
 
-    constructor() { }
+    isEditing = false;
+
+    todoForm: FormGroup;
+
+    constructor(
+        private formBuilder: FormBuilder
+    ) { }
+
+    submitForm() {
+        if (this.todoForm.valid) {
+            const { description } = this.todoForm.value,
+                todo = { ...this.item, description };
+
+            this.update.emit(todo);
+        }
+    }
 
     toggleIsCompleted() {
         this.update.emit({
@@ -22,8 +38,20 @@ export class TodoItemComponent implements OnInit {
         });
     }
 
+    toggleIsEditing() {
+        this.isEditing = !this.isEditing;
+    }
+
     removeItem() {
         this.remove.emit(this.item);
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes.item && changes.item.firstChange) {
+            this.todoForm = this.formBuilder.group({
+                description: [this.item.description, Validators.required]
+            });
+        }
     }
 
     ngOnInit() {
