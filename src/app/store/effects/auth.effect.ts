@@ -6,6 +6,7 @@ import { map, switchMap } from 'rxjs/operators';
 
 import * as authAction from '../actions/auth.action';
 import * as fromServices from '../../shared/services';
+import * as fromRouter from '../actions/router.action';
 
 @Injectable()
 export class AuthEffect {
@@ -57,16 +58,21 @@ export class AuthEffect {
             })
         );
 
-    // @Effect()
-    // setIsAuthenticated$ = this.actions$
-    //     .ofType(authAction.SET_IS_AUTHENTICATED)
-    //     .pipe(
-    //         map(isAuthenticated => {
-    //            if (isAuthenticated) {
-    //                this.router.navigate(['/todos']);
-    //            }  else {
-    //                this.router.navigate(['/auth']);
-    //            }
-    //         })
-    //     );
+    @Effect()
+    setIsAuthenticated$ = this.actions$
+        .ofType(authAction.SET_IS_AUTHENTICATED)
+        .pipe(
+            map((action: authAction.SetIsAuthenticated) => action.payload),
+            map(isAuthenticated => {
+               if (isAuthenticated) {
+                   return new fromRouter.Go({
+                       path: ['/todos']
+                   });
+               }  else {
+                   return new fromRouter.Go({
+                       path: ['/auth']
+                   });
+               }
+            })
+        );
 }
