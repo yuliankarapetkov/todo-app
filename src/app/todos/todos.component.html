@@ -8,13 +8,23 @@
     </div>
 
     <div class="todos__content container">
-        <div class="todos-list">
-            <todos-todo-item
-                *ngFor="let item of todos$ | async"
-                [item]="item"
-                (remove)="onRemoveTodo($event)"
-                (update)="onUpdateTodo($event)">
-            </todos-todo-item>
+        <div  class="todos-list">
+            <div *ngIf="(todos$ | async).length; else noTodos">
+                <todos-todo-item
+                    *ngFor="let item of todos$ | async"
+                    [item]="item"
+                    (remove)="onRemoveTodo($event)"
+                    (update)="onUpdateTodo($event)">
+                </todos-todo-item>
+            </div>
+
+            <ng-template #noTodos>
+                <div class="todos-list__empty">
+                    <p>
+                        No tasks here. You are either a great doer, or a great procrastinator. 
+                    </p>
+                </div>
+            </ng-template>
         </div>
     </div>
 </div>
