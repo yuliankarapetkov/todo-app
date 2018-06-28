@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -7,11 +7,13 @@ import { FormBuilder, Validators } from '@angular/forms';
     templateUrl: './todo-form.component.html',
     styleUrls: ['./todo-form.component.scss']
 })
-export class TodoFormComponent implements OnInit {
+export class TodoFormComponent implements OnChanges, OnInit {
+    @Input() isDisabled = false;
+
     @Output() addTodo = new EventEmitter<any>();
 
     todoForm = this.formBuilder.group({
-        description: ['', [Validators.required]]
+        description: [{ value: '', disabled: true }, [Validators.required]]
     });
 
     constructor(
@@ -23,6 +25,19 @@ export class TodoFormComponent implements OnInit {
             const todo = { ...this.todoForm.value, isCompleted: false };
             this.addTodo.emit(todo);
             this.todoForm.reset();
+        }
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes.isDisabled) {
+            const isDisabled = changes.isDisabled.currentValue,
+                descriptionInput = this.todoForm.get('description');
+
+            if (isDisabled) {
+                descriptionInput.disable();
+            } else {
+                descriptionInput.enable();
+            }
         }
     }
 

@@ -8,7 +8,7 @@ export interface TodosState {
 }
 
 export const initialState: TodosState = {
-    list: [],
+    list: undefined,
     loaded: false,
     loading: false,
 };

@@ -12,9 +12,14 @@
         .todos-list {
             margin-top: 60px;
 
-            &__empty {
+            &__empty,
+            &__loading {
                 font-size: 24px;
                 color: $secondary-text;
+            }
+
+            &__loading {
+                text-align: center;
             }
         }
     }
@@ -30,7 +35,8 @@
             .todos-list {
                 margin-top: 40px;
 
-                &__empty {
+                &__empty,
+                &__loading {
                     font-size: 18px;
                 }
             }
