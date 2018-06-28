@@ -5,7 +5,7 @@ export interface AuthState {
 }
 
 export const initialState: AuthState = {
-    isAuthenticated: false
+    isAuthenticated: undefined
 };
 
 export function authReducer(state = initialState, action: fromAuth.AuthAction): AuthState {

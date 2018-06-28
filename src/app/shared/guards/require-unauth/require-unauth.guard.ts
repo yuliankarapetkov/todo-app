@@ -6,12 +6,12 @@ import { take, tap } from 'rxjs/operators';
 
 import * as fromStore from '../../../store';
 import { SharedModule } from '../../shared.module';
-import { filter } from 'rxjs/internal/operators';
+import { filter, map } from 'rxjs/internal/operators';
 
 @Injectable({
     providedIn: SharedModule
 })
-export class RequireAuthGuard implements CanActivate {
+export class RequireUnauthGuard implements CanActivate {
     constructor(private store: Store<fromStore.State>) { }
 
     canActivate() {
@@ -20,12 +20,13 @@ export class RequireAuthGuard implements CanActivate {
                 filter(isAuthenticated => isAuthenticated !== undefined),
                 take(1),
                 tap(isAuthenticated => {
-                    if (!isAuthenticated) {
+                    if (isAuthenticated) {
                         this.store.dispatch(new fromStore.Go({
-                            path: ['/auth']
+                            path: ['/todos']
                         })) ;
                     }
                 }),
+                map(isAuthenticated => !isAuthenticated)
             );
     }
 }

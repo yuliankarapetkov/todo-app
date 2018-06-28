@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 // Guards
 import { RequireAuthGuard } from './shared/guards/require-auth/require-auth.guard';
+import { RequireUnauthGuard } from './shared/guards/require-unauth/require-unauth.guard';
 
 const ROUTES: Routes = [
     {
@@ -12,7 +13,8 @@ const ROUTES: Routes = [
     },
     {
         path: 'auth',
-        loadChildren: './auth/auth.module#AuthModule'
+        loadChildren: './auth/auth.module#AuthModule',
+        canActivate: [RequireUnauthGuard]
     },
     {
         path: 'todos',
